@@ -1,0 +1,151 @@
+import {
+  Briefcase,
+  FileText,
+  GraduationCap,
+  Languages,
+  LayoutDashboard,
+  Lightbulb,
+  Mail,
+  MessageSquare,
+  Palette,
+  PenSquare,
+  SwatchBook,
+  Wand2,
+  type LucideIcon,
+} from 'lucide-react';
+
+export interface ToolDefinition {
+  title: string;
+  description: string;
+  href: string;
+  icon: LucideIcon;
+  imageId?: string;
+  isPro: boolean;
+  isAvailable: boolean;
+  launchLabel?: string;
+  group: 'General' | 'Writer' | 'Tools' | 'Education';
+}
+
+export const toolCatalog: ToolDefinition[] = [
+  {
+    title: 'Dashboard',
+    description: 'Browse your workspace and launch tools.',
+    href: '/dashboard',
+    icon: LayoutDashboard,
+    isPro: false,
+    isAvailable: true,
+    group: 'General',
+  },
+  {
+    title: 'Human-Like Letter Writer',
+    description: 'Craft personalized letters with AI that mimics human writing styles for any tone or purpose.',
+    href: '/writer/letter',
+    icon: Mail,
+    imageId: 'letter-writer',
+    isPro: false,
+    isAvailable: true,
+    group: 'Writer',
+  },
+  {
+    title: 'Novel Co-writer',
+    description: 'Your creative partner for writing fiction. Generate ideas, continue chapters, and refine your prose.',
+    href: '/writer/novel',
+    icon: PenSquare,
+    imageId: 'novel-writer',
+    isPro: false,
+    isAvailable: true,
+    group: 'Writer',
+  },
+  {
+    title: 'Fine-Print Summarizer',
+    description: 'Summarize complex documents, highlighting key terms and conditions in an easy-to-understand format.',
+    href: '/tools/summarizer',
+    icon: FileText,
+    imageId: 'summarizer',
+    isPro: false,
+    isAvailable: true,
+    group: 'Tools',
+  },
+  {
+    title: 'Business Form Creator',
+    description: 'Generate customized business forms like invoices and contracts with AI assistance.',
+    href: '/tools/forms',
+    icon: Briefcase,
+    imageId: 'form-creator',
+    isPro: false,
+    isAvailable: true,
+    group: 'Tools',
+  },
+  {
+    title: 'Start-up Idea Mentor',
+    description: 'Generate innovative startup ideas tailored to your skills and capabilities with our AI-powered business concept mentor.',
+    href: '/tools/business-idea-generator',
+    icon: Lightbulb,
+    imageId: 'business-idea-generator',
+    isPro: false,
+    isAvailable: true,
+    group: 'Tools',
+  },
+  {
+    title: 'Prompt Enhancer',
+    description: 'Turn a simple goal into a detailed, effective instruction for any AI.',
+    href: '/tools/prompt-enhancer',
+    icon: Wand2,
+    imageId: 'prompt-enhancer',
+    isPro: false,
+    isAvailable: true,
+    group: 'Tools',
+  },
+  {
+    title: 'PDF & Image Tools',
+    description: 'A full suite of tools to merge, split, compress, and convert your PDF and image files.',
+    href: '/tools/pdf',
+    icon: SwatchBook,
+    imageId: 'pdf-tools',
+    isPro: true,
+    isAvailable: true,
+    group: 'Tools',
+  },
+  {
+    title: 'AI Translator',
+    description: 'Transform your text instantly with our AI translator. Supports multiple languages.',
+    href: '/pro',
+    icon: Languages,
+    imageId: 'ai-translator',
+    isPro: true,
+    isAvailable: false,
+    launchLabel: 'Upgrade to unlock',
+    group: 'Tools',
+  },
+  {
+    title: 'Chat with PDF',
+    description: 'Summarize, ask questions, and extract insights from PDFs once this premium feature ships.',
+    href: '/pro',
+    icon: MessageSquare,
+    imageId: 'chat-pdf',
+    isPro: true,
+    isAvailable: false,
+    launchLabel: 'Request early access',
+    group: 'Tools',
+  },
+  {
+    title: 'Image Generator',
+    description: 'Create AI art and images from a text prompt.',
+    href: '/tools/image-generator',
+    icon: Palette,
+    imageId: 'image-generator',
+    isPro: false,
+    isAvailable: true,
+    group: 'Tools',
+  },
+  {
+    title: 'SME Course Designer',
+    description: 'Turn your expertise into engaging courses with AI-generated outlines and content.',
+    href: '/courses/designer',
+    icon: GraduationCap,
+    imageId: 'course-designer',
+    isPro: false,
+    isAvailable: true,
+    group: 'Education',
+  },
+];

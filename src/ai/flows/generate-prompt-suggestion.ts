@@ -1,0 +1,56 @@
+'use server';
+
+/**
+ * @fileOverview An AI agent that helps users craft better prompts for other AI models.
+ *
+ * - generatePromptSuggestion - A function that takes a user's goal and suggests an improved prompt.
+ */
+
+import { ai } from '@/ai/genkit';
+import { z } from 'zod';
+
+const GeneratePromptSuggestionInputSchema = z.object({
+  goal: z.string().describe('The user\'s simple goal or what they want the AI to do.'),
+});
+
+const GeneratePromptSuggestionOutputSchema = z.object({
+  suggestedPrompt: z.string().describe('The improved, detailed, and optimized prompt for the user to copy.'),
+});
+
+
+export async function generatePromptSuggestion(input: z.infer<typeof GeneratePromptSuggestionInputSchema>): Promise<z.infer<typeof GeneratePromptSuggestionOutputSchema>> {
+  return generatePromptSuggestionFlow(input);
+}
+
+
+const suggestionPrompt = ai.definePrompt({
+    name: 'generatePromptSuggestionPrompt',
+    input: { schema: GeneratePromptSuggestionInputSchema },
+    output: { schema: GeneratePromptSuggestionOutputSchema },
+    prompt: `You are an AI expert specializing in "Prompt Engineering." Your task is to help a user craft a better prompt.
+
+The user will provide a simple goal. You must rewrite it into a clear, detailed, and effective prompt that they can use with another AI model.
+
+The new prompt should:
+- Clearly define the AI's role and persona (e.g., "You are an expert editor...").
+- Provide specific, actionable instructions.
+- State any important constraints or negative constraints (e.g., "Do not change the author's voice...").
+- Give context where necessary.
+
+User's Goal: "{{{goal}}}"
+
+Now, generate the suggested prompt. Return only the prompt itself.`,
+});
+
+
+const generatePromptSuggestionFlow = ai.defineFlow(
+  {
+    name: 'generatePromptSuggestionFlow',
+    inputSchema: GeneratePromptSuggestionInputSchema,
+    outputSchema: GeneratePromptSuggestionOutputSchema,
+  },
+  async (input) => {
+    const { output } = await suggestionPrompt(input);
+    return output!;
+  }
+);
