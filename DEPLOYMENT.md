@@ -157,10 +157,11 @@ After deploying, verify these routes load correctly:
 | Route                          | Expected Behavior              |
 | ------------------------------ | ------------------------------ |
 | `/`                            | Landing / dashboard            |
-| `/tools/writer`                | Novel co-writer tool           |
+| `/tools/writer/novel`          | Novel co-writer tool           |
+| `/tools/writer/letter`         | Human-like letter writer       |
 | `/tools/forms`                 | Business form creator          |
 | `/tools/summarizer`            | Document summarizer            |
-| `/tools/courses`               | SME course designer            |
+| `/tools/courses/designer`      | SME course designer            |
 | `/admin`                       | Admin panel                    |
 | `/pro`                         | Pro/upgrade page               |
 

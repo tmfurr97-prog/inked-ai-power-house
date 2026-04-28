@@ -7,36 +7,42 @@ import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/comp
 import { ArrowRight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 interface ToolCardProps {
   title: string;
   description: string;
   href: string;
   icon: LucideIcon;
+  imageId?: string;
   isAvailable?: boolean;
   launchLabel?: string;
   group?: string;
   onClick?: () => void;
 }
 
+const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop";
+
 export function ToolCard({
   title,
   description,
   href,
   icon: Icon,
+  imageId,
   isAvailable = true,
   launchLabel,
   onClick,
 }: ToolCardProps) {
-  // Direct URL to bypass the missing local file
-  const displayImage = "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop";
+  const matched = imageId ? PlaceHolderImages.find((img) => img.id === imageId) : undefined;
+  const displayImage = matched?.imageUrl ?? FALLBACK_IMAGE;
+  const imageAlt = matched?.imageHint ?? title;
 
   return (
     <Card onClick={isAvailable ? onClick : undefined} className={cn("overflow-hidden transition-all hover:shadow-md", !isAvailable && "opacity-75")}>
       <div className="aspect-video w-full overflow-hidden bg-muted">
         <img 
           src={displayImage} 
-          alt={title}
+          alt={imageAlt}
           className="h-full w-full object-cover transition-transform hover:scale-105" 
         />
       </div>

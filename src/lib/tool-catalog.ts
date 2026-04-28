@@ -39,7 +39,7 @@ export const toolCatalog: ToolDefinition[] = [
   {
     title: 'Human-Like Letter Writer',
     description: 'Craft personalized letters with AI that mimics human writing styles for any tone or purpose.',
-    href: '/writer/letter',
+    href: '/tools/writer/letter',
     icon: Mail,
     imageId: 'letter-writer',
     isPro: false,
@@ -49,7 +49,7 @@ export const toolCatalog: ToolDefinition[] = [
   {
     title: 'Novel Co-writer',
     description: 'Your creative partner for writing fiction. Generate ideas, continue chapters, and refine your prose.',
-    href: '/writer/novel',
+    href: '/tools/writer/novel',
     icon: PenSquare,
     imageId: 'novel-writer',
     isPro: false,
@@ -141,7 +141,7 @@ export const toolCatalog: ToolDefinition[] = [
   {
     title: 'SME Course Designer',
     description: 'Turn your expertise into engaging courses with AI-generated outlines and content.',
-    href: '/courses/designer',
+    href: '/tools/courses/designer',
     icon: GraduationCap,
     imageId: 'course-designer',
     isPro: false,
