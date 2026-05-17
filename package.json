@@ -49,7 +49,7 @@
     "embla-carousel-react": "^8.6.0",
     "genkit": "^1.28.0",
     "lucide-react": "^0.475.0",
-    "next": "^16.2.4",
+    "next": "^16.2.6",
     "next-auth": "^5.0.0-beta.30",
     "patch-package": "^8.0.0",
     "react": "^19.2.1",
